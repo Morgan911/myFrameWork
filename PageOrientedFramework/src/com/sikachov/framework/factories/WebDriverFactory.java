@@ -13,7 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.opera.core.systems.OperaDriver;
 
-public class WebDriverFactory {
+public class WebDriverFactory { 
 
   // Factory settings
 
