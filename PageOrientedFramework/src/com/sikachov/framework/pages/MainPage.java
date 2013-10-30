@@ -1,5 +1,6 @@
 package com.sikachov.framework.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import com.sikachov.framework.factories.MyPageFactory;
 
 public class MainPage extends Page {
 
-	private static final String PRODUCT_LINK_TEXT = "Вентиляторы";
+	private static final String PRODUCT_LINK_TEXT = "Микроволновки";
 	@FindBy(css = ".banner_hit")
 	public WebElement banner;
 	@FindBy(linkText = PRODUCT_LINK_TEXT)
@@ -16,15 +17,17 @@ public class MainPage extends Page {
 
 	@Override
 	public void tryToOpen() {
-		throw new ElementNotVisibleException(
-				"Главная страница не открылась или проверочного элемента banner нет.");
+		
 	}
 
 	@Override
 	public boolean isOnThisPage() {
-		if (banner.isDisplayed())
+		try{
+			driver.findElement(By.cssSelector(".banner_hit"));
 			return true;
-		return false;
+		}catch(Exception e){
+			return false;
+		}
 	}
 
 	public void goToProductPage() {

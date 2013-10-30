@@ -1,5 +1,7 @@
 package com.sikachov.framework.test;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,7 +16,9 @@ public abstract class BaseTest {
 	@BeforeTest
 	public void setUp() {
 		driver = WebDriverFactory.getDriver(DesiredCapabilities.firefox());
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		driver.get(BASE_ADDRESS);
+		
 	}
 
 	@After
